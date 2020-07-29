@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>AngularJS 1.8.0 Register Login Script using PHP Mysql</title>
+  <title>AngularJS Register Login Script using PHP Mysql</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
   <style>
@@ -15,7 +15,7 @@
  </head>
  <body>
   <br />
-   <h3 align="center">AngularJS 1.8.0 Register Login Script using PHP Mysql</h3>
+   <h3 align="center">AngularJS Register Login Script using PHP Mysql</h3>
   <br />
 
   <div ng-app="login_register_app" ng-controller="login_register_controller" class="container form_style">
@@ -31,19 +31,28 @@
         </div>
         <div class="panel-body">
          <form method="post" ng-submit="submitLogin()">
+
           <div class="form-group">
            <label>Enter Your Email</label>
            <input type="text" name="email" ng-model="loginData.email" class="form-control" />
           </div>
+
           <div class="form-group">
-           <label>Enter Your Password</label>
-           <input type="password" name="password" ng-model="loginData.password" class="form-control" />
-          </div>
+            <label>Enter Password</label>
+            <div class="input-group">
+              <input type="{{inputType}}" name="password" class="form-control input-lg" ng-model="loginData.password" placeholder="Enter Password" />
+              <span class="input-group-addon">
+                <span class="{{showHideClass}}" ng-click="showPassword()" style="cursor:pointer"></span>
+              </span>
+            </div>
+           </div>
+
           <div class="form-group" align="center">
            <input type="submit" name="login" class="btn btn-primary" value="Login" />
            <br />
            <input type="button" name="register_link" class="btn btn-primary btn-link" ng-click="showRegister()" value="Register" />
           </div>
+
          </form>
         </div>
       </div>
@@ -141,6 +150,22 @@
               location.reload();
             }
           });
+        };
+
+        $scope.inputType = 'password';
+        $scope.showHideClass = 'glyphicon glyphicon-eye-open';
+
+        $scope.showPassword = function(){
+          //console.log($scope.loginData);
+          if($scope.loginData.password != null) {
+            if($scope.inputType == 'password') {
+              $scope.inputType = 'text';
+              $scope.showHideClass = 'glyphicon glyphicon-eye-close';
+            } else {
+              $scope.inputType = 'password';
+              $scope.showHideClass = 'glyphicon glyphicon-eye-open';
+            }
+          }
         };
 
       });
