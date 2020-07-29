@@ -45,7 +45,7 @@
                 <span class="{{showHideClass}}" ng-click="showPassword()" style="cursor:pointer"></span>
               </span>
             </div>
-           </div>
+          </div>
 
           <div class="form-group" align="center">
            <input type="submit" name="login" class="btn btn-primary" value="Login" />
@@ -63,23 +63,33 @@
       </div>
       <div class="panel-body">
        <form method="post" ng-submit="submitRegister()">
+
         <div class="form-group">
          <label>Enter Your Name</label>
          <input type="text" name="name" ng-model="registerData.name" class="form-control" />
         </div>
+
         <div class="form-group">
          <label>Enter Your Email</label>
          <input type="text" name="email" ng-model="registerData.email" class="form-control" />
         </div>
+
         <div class="form-group">
-         <label>Enter Your Password</label>
-         <input type="password" name="password" ng-model="registerData.password" class="form-control" />
+          <label>Enter Password</label>
+          <div class="input-group">
+            <input type="{{inputType}}" name="password" class="form-control input-lg" ng-model="registerData.password" placeholder="Enter Password" />
+            <span class="input-group-addon">
+              <span class="{{showHideClass}}" ng-click="showPassword()" style="cursor:pointer"></span>
+            </span>
+          </div>
         </div>
+
         <div class="form-group" align="center">
          <input type="submit" name="register" class="btn btn-primary" value="Register" />
          <br />
          <input type="button" name="login_link" class="btn btn-primary btn-link" ng-click="showLogin()" value="Login" />
         </div>
+        
        </form>
       </div>
      </div>
@@ -156,8 +166,10 @@
         $scope.showHideClass = 'glyphicon glyphicon-eye-open';
 
         $scope.showPassword = function(){
-          //console.log($scope.loginData);
-          if($scope.loginData.password != null) {
+          if(
+            ($scope.loginData && $scope.loginData.password != null) || 
+            ($scope.registerData && $scope.registerData.password != null)
+          ) {
             if($scope.inputType == 'password') {
               $scope.inputType = 'text';
               $scope.showHideClass = 'glyphicon glyphicon-eye-close';
