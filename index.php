@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>AngularJS Register Login Script using PHP Mysql</title>
+  <title>AngularJS 1.8.0 Register Login Script using PHP Mysql</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
   <style>
@@ -15,7 +15,7 @@
  </head>
  <body>
   <br />
-   <h3 align="center">AngularJS Register Login Script using PHP Mysql</h3>
+   <h3 align="center">AngularJS 1.8.0 Register Login Script using PHP Mysql</h3>
   <br />
 
   <div ng-app="login_register_app" ng-controller="login_register_controller" class="container form_style">
